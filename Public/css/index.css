@@ -1,0 +1,11 @@
+body{
+	margin: 0;
+	text-align: center;
+}
+.navbar{
+	height: 70px;
+	background-color: beige;
+}
+.navbar h1{
+	margin: 0;
+}

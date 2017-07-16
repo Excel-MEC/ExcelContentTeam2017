@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Excel 2017</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="navbar">
+	<h1>Content Team</h1>
+</div>
+<h2>Events</h2>
+<ul>
+	<% if(eventnames!="Nothing"){%>
+		<% for(var i=0;i<eventnames.length;i++){%>
+			<li><a href="/editEvents?eventid=<%=eventId[i]%>"><%=eventnames[i]%></a></li>
+		<%}%>
+	<% } else {%>
+		<h2>No Events</h2>
+	<%}%>
+</ul>
+</body>
+</html>
