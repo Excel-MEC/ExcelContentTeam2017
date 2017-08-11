@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <title>Add Event|Excel 2017</title>
     <!-- Include external CSS. -->
-    <link rel="stylesheet" type="text/css" href="css/newEvent.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/newEvent.css">
+
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
- 
-    <!-- Include Editor style. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+      <!-- Include Editor style. -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
   </head>
@@ -16,40 +20,72 @@
   <body>
 
     <h3>Name of the Event</h3>
-    <input type="text" name="name">
+    <input type="text" name="name" class="form-control">
     <h3>Description</h3>
     <textarea></textarea>
     <h3>Event Format</h3>
     <textarea1></textarea1>
+    <h3>Schedule</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepickerfrom">
+                    <input type="text" placeholder="enter from date and time" class="form-control">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6-6">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepickerto">
+                    <input type="text" placeholder="Enter to date and time" class="form-control">
+                    <span class="input-group-addon">
+                        <span class=" glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
     <h3>Prize Pool</h3>
-    <input type="text" name="Prize_money1" placeholder="Enter 1st prize amount">
-    <input type="text" name="Prize_money2" placeholder="Enter 2nd Prize amount">
-    <input type="text" name="Prize_money3" placeholder="Enter 3rd Prize amount"><br>
+    <input type="text" class="form-control" name="Prize_money1" placeholder="Enter 1st prize amount">
+    <input type="text" class="form-control" name="Prize_money2" placeholder="Enter 2nd Prize amount">
+    <input type="text" class="form-control" name="Prize_money3" placeholder="Enter 3rd Prize amount"><br>
     <h3>Rules</h3>
     <div class="rules">
-        <input type="text" name="Rules">
-        <button class="new_rule">Add another rule</button><br>
+        <input type="text" class="form-control" name="Rules">
+        <button class=" btn btn-primary new_rule">Add another rule</button><br>
     </div>
     <h3>Contact Details</h3>
-        <input type="text" name="Contact_Name1" placeholder="Enter Name">
-        <input type="text" name="Contact_Phone_number1" placeholder="Enter Phone Number"><br>
-        <input type="text" name="Contact_Name2" placeholder="Enter Name">
-        <input type="text" name="Contact_Phone_number2" placeholder="Enter Phone Number"><br>
+        <input type="text" class="col-sm-6 form-control" name="Contact_Name1" placeholder="Enter Name">
+        <input type="text"  class="col-sm-6 form-control" name="Contact_Phone_number1" placeholder="Enter Phone Number"><br>
+        <input type="text" class="col-sm-6 form-control" name="Contact_Name2" placeholder="Enter Name">
+        <input type="text" class="form-control col-sm-6" name="Contact_Phone_number2" placeholder="Enter Phone Number"><br>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
- 
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/js/froala_editor.pkgd.min.js"></script>
-    <button class="Submit">Submit</button>
+    <button class=" btn btn-primary Submit">Submit</button>
     <!-- Initialize the editor. -->
-    <script> $(function() { $('textarea').froalaEditor() 
-        $('textarea1').froalaEditor()
+    <script> $(function() { $('textarea').froalaEditor({
+		    toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html']
+	    })
+        $('textarea1').froalaEditor({
+	        toolbarButtons: ['undo', 'redo', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html']
+        })
     });
     $('.new_rule').click(function(){
         console.log("hrll")
         $('.rules').append("<input type=text name=Rules style=margin-top:20px;><br>")
 
-    })
+    });
+    $('#datetimepickerfrom').datetimepicker();
+    $('#datetimepickerto').datetimepicker();
     </script>
     <script src = "js/newEvent.js"></script>
   </body>
