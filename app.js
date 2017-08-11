@@ -15,6 +15,6 @@ app.use(function (err,req,res,next) {
 })
 app.use('/',router)
 
-app.listen(3000,function () {
+app.listen(process.env.PORT||3000,function () {
 	console.log("Server listening at port 3000");
 });
