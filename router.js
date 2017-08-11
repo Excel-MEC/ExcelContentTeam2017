@@ -3,7 +3,7 @@ var app = express();
 var fs = require('fs');
 app.set('view engine','ejs');
 app.get('/favicon.ico',function (req,res) {
-
+	res.status(204)
 
 });
 app.get('/',function (req,res) {
