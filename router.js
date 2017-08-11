@@ -93,7 +93,12 @@ app.post('/edit',function (req,res) {
 			res.send("Sucess")
 		}
 	})
-})
+});
+
+app.get('/events',function (req,res) {
+	var events = require('./event.json');
+	res.send(events);
+});
 
 module.exports = app;
 
