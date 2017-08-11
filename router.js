@@ -2,7 +2,10 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 app.set('view engine','ejs');
+app.get('/favicon.ico',function (req,res) {
 
+
+});
 app.get('/',function (req,res) {
 	var eventNames = [];
 	var eventid = []
