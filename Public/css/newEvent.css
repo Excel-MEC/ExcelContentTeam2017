@@ -7,3 +7,9 @@ body{
 	margin-bottom: 10px;
     margin-top: 10px;
 }
+.fr-counter {
+    right: 0
+}
+.fr-box.fr-basic .fr-element{
+    height: 200px;
+}
