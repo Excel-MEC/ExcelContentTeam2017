@@ -2,13 +2,16 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 app.set('view engine','ejs');
+
+
 app.get('/favicon.ico',function (req,res) {
 	res.status(204)
-
 });
+
+
 app.get('/',function (req,res) {
 	var eventNames = [];
-	var eventid = []
+	var eventid = [];
 	if (fs.existsSync('./event.json')) {
 		var event = require('./event.json');
 		//var events =JSON.parse(event);
@@ -24,10 +27,13 @@ app.get('/',function (req,res) {
 	//res.render('index.ejs')
 });
 
+
 app.get('/editEvents',function (req,res) {
 	console.log(req.url);	
 	res.render('addEvent.ejs')
-})
+});
+
+
 app.get('/events/*',function (req,res) {
 	var d;
 	var event = require('./event.json');
@@ -41,14 +47,14 @@ app.get('/events/*',function (req,res) {
 		}
 	}
 	res.send(d);
-})
+});
 
 app.get('/addEvent',function (req,res) {
 	res.render("addEvent.ejs")
 });
 
 app.post('/newEvent',function (req,res) {
-	console.log(req.body)
+	console.log(req.body);
 	if (fs.existsSync('./event.json')) {
 		var event = require('./event.json');
 		event.push(req.body);
@@ -63,7 +69,7 @@ app.post('/newEvent',function (req,res) {
 	}
 	else{
 		var data = [];
-		data.push(req.body)
+		data.push(req.body);
 		fs.writeFile('./event.json',JSON.stringify(data),function (err) {
 			if (err) {
 				console.log(err)
@@ -75,8 +81,9 @@ app.post('/newEvent',function (req,res) {
 	}
 	res.send("sucess")
 });
+
 app.post('/edit',function (req,res) {
-	console.log(req.body)
+	console.log(req.body);
 	var event =require('./event.json');
 	for (var i = 0; i < event.length; i++) {
 		if (event[i].id==req.body.id) {
@@ -85,12 +92,12 @@ app.post('/edit',function (req,res) {
 	}
 	fs.writeFile('./event.json',JSON.stringify(event),function (err) {
 		if (err) {
-			console.log(err)
+			console.log(err);
 			res.send(err)
 		}
 		else{
-			console.log("sucess")
-			res.send("Sucess")
+			console.log("sucess");
+			res.send("Sucess");
 		}
 	})
 });
